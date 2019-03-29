@@ -84,7 +84,8 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             mView.hideLoading();
         }
         if (e instanceof HttpException) {
-            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
+//            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
+            mView.showErrorMsg("网络错误");
             if (isShowStatusView) {
                 mView.showNoNetwork();
             }
@@ -111,7 +112,8 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             return;
         }
         if (!NetworkUtils.isConnected()) {
-            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
+//            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
+            mView.showErrorMsg("网络错误");
         }
     }
 }
