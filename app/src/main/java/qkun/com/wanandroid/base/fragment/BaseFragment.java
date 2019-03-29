@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
@@ -24,7 +25,7 @@ import qkun.com.wanandroid.di.component.DaggerFragmentComponent;
 import qkun.com.wanandroid.di.component.FragmentComponent;
 import qkun.com.wanandroid.di.mudule.FragmentModule;
 
-public abstract class BaseFragment<T extends IPresenter> extends RxFragment implements IView {
+public abstract class BaseFragment<T extends IPresenter> extends RxFragment implements IView, View.OnClickListener {
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
 
     protected BaseActivity mActivity;
@@ -135,7 +136,9 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
         isLoaded = false;
     }
 
-    /** 初始化FragmentComponent*/
+    /**
+     * 初始化FragmentComponent
+     */
     private void initFragmentComponent() {
         mFragmentComponent = DaggerFragmentComponent.builder()
                 .applicationComponent(((App) getActivity().getApplication()).getmApplicationComponent())
@@ -156,8 +159,19 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
     }
 
     @Override
-    public void showLoading() {
+    public void onClick(View v) {
 
+    }
+
+    @Override
+    public void showErrorMsg(String errorMsg) {
+        ToastUtils.showShort(errorMsg);
+    }
+
+    @Override
+    public void showLoading() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showLoading();
     }
 
     @Override
@@ -166,23 +180,27 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
     }
 
     @Override
-    public void showSuccess(String message) {
-
+    public void showError() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showError();
     }
 
     @Override
-    public void showFailed(String message) {
-
+    public void showNoNetwork() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showNoNetwork();
     }
 
     @Override
-    public void showNoNet() {
-
+    public void showEmpty() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showEmpty();
     }
 
     @Override
-    public void onRetry() {
-
+    public void showContent() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showContent();
     }
 
     @Override
@@ -190,8 +208,4 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
         return this.bindToLifecycle();
     }
 
-    @Override
-    public void NoData() {
-
-    }
 }

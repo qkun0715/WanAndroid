@@ -3,11 +3,11 @@ package qkun.com.wanandroid.http.exception;
 /**
  * Created by QKun on 2018/11/6.
  */
-public class ApiException extends RuntimeException {
+public class ServerException extends RuntimeException {
     private int code;
     private String msg;
 
-    public ApiException(int code, String msg) {
+    public ServerException(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

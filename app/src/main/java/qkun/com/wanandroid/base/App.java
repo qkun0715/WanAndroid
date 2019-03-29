@@ -10,19 +10,19 @@ import qkun.com.wanandroid.di.component.DaggerApplicationComponent;
 import qkun.com.wanandroid.di.mudule.ApplicationModule;
 
 public class App extends Application {
-    private static App mInstance;
+    private static Context context;
     private ApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mInstance = this;
+        context = getApplicationContext();
         initApplicationComponent();
         Utils.init(this);
     }
 
-    public static Context getAppContext() {
-        return mInstance.getApplicationContext();
+    public static Context getContext() {
+        return context;
     }
 
     /**

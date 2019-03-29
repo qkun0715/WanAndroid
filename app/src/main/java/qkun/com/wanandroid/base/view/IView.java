@@ -4,23 +4,19 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 
 public interface IView {
 
-    //显示进度中
+    void showErrorMsg(String errorMsg);
+
     void showLoading();
 
-    //隐藏进度
     void hideLoading();
 
-    //显示请求成功
-    void showSuccess(String message);
+    void showError();
 
-    //失败重试
-    void showFailed(String message);
+    void showNoNetwork();
 
-    //显示当前网络不可用
-    void showNoNet();
+    void showEmpty();
 
-    //重试
-    void onRetry();
+    void showContent();
 
     /**
      * 绑定生命周期
@@ -30,9 +26,6 @@ public interface IView {
      */
     <T> LifecycleTransformer<T> bindToLife();
 
-    /**
-     * 没有数据
-     */
-    void NoData();
+
 
 }

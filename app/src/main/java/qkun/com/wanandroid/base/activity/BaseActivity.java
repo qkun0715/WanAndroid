@@ -3,7 +3,9 @@ package qkun.com.wanandroid.base.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.gyf.barlibrary.ImmersionBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -43,9 +45,24 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         ImmersionBar.with(this).init();
         initInjector();
         mBind = ButterKnife.bind(this);
+        onViewCreated();
         attachView();
         initView();
         initEventAndData();
+    }
+
+    protected void onViewCreated() {
+//        ViewGroup mNormalView = findViewById(R.id.normal_view);
+//        if (mNormalView != null) {
+//            mNormalView.setVisibility(View.GONE);
+//        }
+//        mMultipleStatusView = findViewById(R.id.custom_multiple_status_view);
+//        if (mMultipleStatusView != null) {
+//            mMultipleStatusView.setOnClickListener(v -> mPresenter.reload());
+//        }
+//        if (mPresenter != null) {
+//            mPresenter.attachView(this);
+//        }
     }
 
 
@@ -86,8 +103,14 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     }
 
     @Override
-    public void showLoading() {
+    public void showErrorMsg(String errorMsg) {
+        ToastUtils.showShort(errorMsg);
+    }
 
+    @Override
+    public void showLoading() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showLoading();
     }
 
     @Override
@@ -96,23 +119,27 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     }
 
     @Override
-    public void showSuccess(String message) {
-
+    public void showError() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showError();
     }
 
     @Override
-    public void showFailed(String message) {
-
+    public void showNoNetwork() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showNoNetwork();
     }
 
     @Override
-    public void showNoNet() {
-
+    public void showEmpty() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showEmpty();
     }
 
     @Override
-    public void onRetry() {
-
+    public void showContent() {
+//        if (mMultipleStatusView == null) return;
+//        mMultipleStatusView.showContent();
     }
 
     @Override
@@ -120,10 +147,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         return this.bindToLifecycle();
     }
 
-    @Override
-    public void NoData() {
 
-    }
 
 
     protected void setLoadDataResult(BaseQuickAdapter adapter, SmartRefreshLayout refreshLayout, List list,
