@@ -47,7 +47,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         mBind = ButterKnife.bind(this);
         onViewCreated();
         attachView();
-        initView();
+        initView(savedInstanceState);
         initEventAndData();
     }
 
@@ -193,7 +193,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     /**
      * 初始化布局
      */
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
     /**
      * 初始化数据
