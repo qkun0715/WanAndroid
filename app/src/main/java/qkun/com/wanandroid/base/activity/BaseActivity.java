@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.gyf.barlibrary.ImmersionBar;
+import com.jaeger.library.StatusBarUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
@@ -18,6 +19,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import qkun.com.wanandroid.R;
 import qkun.com.wanandroid.base.App;
 import qkun.com.wanandroid.base.presenter.IPresenter;
 import qkun.com.wanandroid.base.view.IView;
@@ -43,12 +45,17 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         setContentView(getLayoutId());
         //状态栏
 //        ImmersionBar.with(this).init();
+        setStatusBar();
         initInjector();
         mBind = ButterKnife.bind(this);
         onViewCreated();
         attachView();
         initView(savedInstanceState);
         initEventAndData();
+    }
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this,getResources().getColor(R.color.colorPrimary));
     }
 
     protected void onViewCreated() {

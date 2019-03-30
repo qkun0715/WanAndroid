@@ -10,7 +10,9 @@ import android.support.v7.widget.AppCompatImageView;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,4 +140,8 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void setStatusBar() {
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this,null);
+    }
 }
