@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.blankj.utilcode.util.ToastUtils;
 
@@ -18,7 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import qkun.com.wanandroid.base.activity.BaseActivity;
-import qkun.com.wanandroid.constant.Constant;
 import qkun.com.wanandroid.ui.home.HomePagerFragment;
 import qkun.com.wanandroid.ui.knowledge.KnowledgeFragment;
 import qkun.com.wanandroid.ui.navigation.NavigationFragment;
@@ -31,20 +29,6 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.ma_iv_index)
     AppCompatImageView maIvIndex;
-
-    //fragments
-    private HomePagerFragment mHomePagerFragment;
-    private KnowledgeFragment mKnowledgeFragment;
-    private NavigationFragment mNavigationFragment;
-    private ProjectFragment mProjectFragment;
-    /**
-     * 上一个fragment角标
-     */
-    private int mLastFgIndex = -1;
-    /**
-     * 当前fragment所在的位置，默认第一个显示
-     */
-    private int mCurrentFgIndex = 0;
 
     private List<Fragment> mFragments;
 

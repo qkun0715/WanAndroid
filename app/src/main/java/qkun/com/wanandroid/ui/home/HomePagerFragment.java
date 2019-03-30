@@ -3,10 +3,16 @@ package qkun.com.wanandroid.ui.home;
 import android.os.Bundle;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
+
+import java.util.List;
+
 import qkun.com.wanandroid.R;
 import qkun.com.wanandroid.base.fragment.BaseFragment;
+import qkun.com.wanandroid.bean.ArticlesBean;
+import qkun.com.wanandroid.bean.HomeBannerBean;
 
-public class HomePagerFragment extends BaseFragment {
+public class HomePagerFragment extends BaseFragment<HomePagerPresenter> implements HomePagerContract.View {
     public static final String TAG = "HomeFragment";
 
     public static HomePagerFragment newInstance(String params) {
@@ -24,7 +30,7 @@ public class HomePagerFragment extends BaseFragment {
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override
@@ -34,6 +40,16 @@ public class HomePagerFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+        mPresenter.loadHomeArticles(true);
+    }
+
+    @Override
+    public void getHomeArticles(ArticlesBean articlesBean, int checker) {
+        ToastUtils.showShort(articlesBean.getDatas().get(0).getAuthor());
+    }
+
+    @Override
+    public void getHomeBanner(List<HomeBannerBean> beans) {
 
     }
 }

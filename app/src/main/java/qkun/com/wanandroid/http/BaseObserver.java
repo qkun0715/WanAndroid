@@ -7,6 +7,7 @@ import android.util.Log;
 import com.blankj.utilcode.util.NetworkUtils;
 
 import io.reactivex.observers.ResourceObserver;
+import qkun.com.wanandroid.R;
 import qkun.com.wanandroid.base.App;
 import qkun.com.wanandroid.base.view.IView;
 import qkun.com.wanandroid.http.exception.ServerException;
@@ -84,8 +85,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             mView.hideLoading();
         }
         if (e instanceof HttpException) {
-//            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
-            mView.showErrorMsg("网络错误");
+            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
             if (isShowStatusView) {
                 mView.showNoNetwork();
             }
@@ -112,8 +112,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             return;
         }
         if (!NetworkUtils.isConnected()) {
-//            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
-            mView.showErrorMsg("网络错误");
+            mView.showErrorMsg(App.getContext().getString(R.string.http_error));
         }
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
+import com.classic.common.MultipleStatusView;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import qkun.com.wanandroid.R;
 import qkun.com.wanandroid.base.App;
 import qkun.com.wanandroid.base.activity.BaseActivity;
 import qkun.com.wanandroid.base.presenter.IPresenter;
@@ -30,6 +32,8 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
 
     protected BaseActivity mActivity;
 
+    private MultipleStatusView mMultipleStatusView;
+
     @Inject
     protected T mPresenter;
     private Unbinder mBind;
@@ -42,7 +46,7 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
     private boolean isFragmentVisible;
     //是否已经初始化加载过
     protected boolean isLoaded;
-    private FragmentComponent mFragmentComponent;
+    protected FragmentComponent mFragmentComponent;
 
     protected abstract int getLayoutId();
 
@@ -73,6 +77,27 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
                 ft.show(this);
             }
             ft.commit();
+        }
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+//        ViewGroup mNormalView = view.findViewById(R.id.normal_view);
+//        if (mNormalView != null) {
+//            mNormalView.setVisibility(View.GONE);
+//        }
+        mMultipleStatusView = view.findViewById(R.id.custom_multiple_status_view);
+        if (mMultipleStatusView != null) {
+            mMultipleStatusView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPresenter.reload();
+                }
+            });
+        }
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
         }
     }
 
@@ -170,8 +195,8 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
 
     @Override
     public void showLoading() {
-//        if (mMultipleStatusView == null) return;
-//        mMultipleStatusView.showLoading();
+        if (mMultipleStatusView == null) return;
+        mMultipleStatusView.showLoading();
     }
 
     @Override
@@ -181,26 +206,26 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
 
     @Override
     public void showError() {
-//        if (mMultipleStatusView == null) return;
-//        mMultipleStatusView.showError();
+        if (mMultipleStatusView == null) return;
+        mMultipleStatusView.showError();
     }
 
     @Override
     public void showNoNetwork() {
-//        if (mMultipleStatusView == null) return;
-//        mMultipleStatusView.showNoNetwork();
+        if (mMultipleStatusView == null) return;
+        mMultipleStatusView.showNoNetwork();
     }
 
     @Override
     public void showEmpty() {
-//        if (mMultipleStatusView == null) return;
-//        mMultipleStatusView.showEmpty();
+        if (mMultipleStatusView == null) return;
+        mMultipleStatusView.showEmpty();
     }
 
     @Override
     public void showContent() {
-//        if (mMultipleStatusView == null) return;
-//        mMultipleStatusView.showContent();
+        if (mMultipleStatusView == null) return;
+        mMultipleStatusView.showContent();
     }
 
     @Override
