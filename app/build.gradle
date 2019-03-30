@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.classic.common:multiple-status-view:1.6'
     implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //net
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'

@@ -23,4 +23,13 @@ public class Constant {
      * 每页数量
      */
     public static final int PAGE_SIZE = 20;
+
+
+    /**
+     * Tag fragment classify
+     */
+    public static final int TYPE_HOME_PAGER = 0;
+    public static final int TYPE_KNOWLEDGE = 1;
+    public static final int TYPE_NAVIGATION = 2;
+    public static final int TYPE_PROJECT = 3;
 }

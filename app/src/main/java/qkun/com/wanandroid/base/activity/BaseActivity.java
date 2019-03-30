@@ -42,7 +42,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         initActivityComponent();
         setContentView(getLayoutId());
         //状态栏
-        ImmersionBar.with(this).init();
+//        ImmersionBar.with(this).init();
         initInjector();
         mBind = ButterKnife.bind(this);
         onViewCreated();
