@@ -45,7 +45,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         setContentView(getLayoutId());
         //状态栏
 //        ImmersionBar.with(this).init();
-        setStatusBar();
+//        setStatusBar();
         initInjector();
         mBind = ButterKnife.bind(this);
         onViewCreated();
@@ -54,9 +54,9 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         initEventAndData();
     }
 
-    protected void setStatusBar() {
-        StatusBarUtil.setColor(this,getResources().getColor(R.color.colorPrimary));
-    }
+//    protected void setStatusBar() {
+//        StatusBarUtil.setColor(this,getResources().getColor(R.color.colorPrimary));
+//    }
 
     protected void onViewCreated() {
 //        ViewGroup mNormalView = findViewById(R.id.normal_view);

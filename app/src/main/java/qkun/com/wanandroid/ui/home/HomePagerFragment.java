@@ -79,7 +79,7 @@ public class HomePagerFragment extends BaseFragment<HomePagerPresenter> implemen
 
     @Override
     public void getHomeArticles(ArticlesBean articlesBean, int checker) {
-        ToastUtils.showShort(articlesBean.getDatas().get(0).getAuthor());
+//        ToastUtils.showShort(articlesBean.getDatas().get(0).getAuthor());
     }
 
     @Override

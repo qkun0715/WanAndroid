@@ -3,6 +3,7 @@ package qkun.com.wanandroid.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.blankj.utilcode.util.Utils;
 
 import qkun.com.wanandroid.di.component.ApplicationComponent;
@@ -19,6 +20,7 @@ public class App extends Application {
         context = getApplicationContext();
         initApplicationComponent();
         Utils.init(this);
+        SDKInitializer.initialize(getApplicationContext());
     }
 
     public static Context getContext() {

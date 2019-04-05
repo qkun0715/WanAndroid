@@ -66,7 +66,7 @@ public class RetrofitManager {
         return new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                LogUtils.d(TAG, message);
+//                LogUtils.d(TAG, message);
             }
         }).setLevel(AppUtils.isAppDebug() ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
     }
