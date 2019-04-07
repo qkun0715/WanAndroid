@@ -77,6 +77,8 @@ public class ProjectFragment extends BaseFragment {
 
 
         mapViewMap = mapView.getMap();
+        // 不显示百度地图Logo
+        mapView.removeViewAt(1);
         //百度地图设置是否显示我的位置
         mapViewMap.setMyLocationEnabled(true);
 
@@ -89,9 +91,9 @@ public class ProjectFragment extends BaseFragment {
 
     private void setMarkerInfo() {
         infos = new ArrayList<MarkerInfoUtil>();
-        infos.add(new MarkerInfoUtil(29.972617,113.942615,"天津站",R.drawable.ic_home_pager,"天津站，俗称天津东站，隶属北京铁路局管辖"));
-        infos.add(new MarkerInfoUtil(29.902617,113.892615,"南开大学",R.drawable.ic_home_pager,"正式成立于1919年，是由严修、张伯苓秉承教育救国理念创办的综合性大学。"));
-        infos.add(new MarkerInfoUtil(29.842617,113.782615,"天津水上公园",R.drawable.ic_home_pager,"天津水上公园原称青龙潭，1951年7月1日正式对游客开放，有北方的小西子之称。"));
+        infos.add(new MarkerInfoUtil(30.516832, 114.419203, "天津站", R.drawable.ic_home_pager, "天津站，俗称天津东站，隶属北京铁路局管辖"));
+        infos.add(new MarkerInfoUtil(30.406832, 114.400203, "南开大学", R.drawable.ic_home_pager, "正式成立于1919年，是由严修、张伯苓秉承教育救国理念创办的综合性大学。"));
+        infos.add(new MarkerInfoUtil(30.466832, 114.429203, "天津水上公园", R.drawable.ic_home_pager, "天津水上公园原称青龙潭，1951年7月1日正式对游客开放，有北方的小西子之称。"));
         addOverlay(infos);
 
     }
@@ -104,9 +106,9 @@ public class ProjectFragment extends BaseFragment {
         LatLng latLng = null;
         Marker marker;
         OverlayOptions options;
-        for(MarkerInfoUtil info:infos){
+        for (MarkerInfoUtil info : infos) {
             //获取经纬度
-            latLng = new LatLng(info.getLatitude(),info.getLongitude());
+            latLng = new LatLng(info.getLatitude(), info.getLongitude());
             //设置marker
             options = new MarkerOptions()
                     .position(latLng)//设置位置
@@ -128,7 +130,6 @@ public class ProjectFragment extends BaseFragment {
     }
 
 
-
     /**
      * 添加多个markers
      */
@@ -139,16 +140,16 @@ public class ProjectFragment extends BaseFragment {
 //        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers);
         LatLng latLng = null;
         Marker marker;
-        OverlayOptions options;
-        for (int i = 5; i < 10; i++) {
-            latLng = new LatLng((29.972587-(10*i)/100),113.942558-(10*i)/100);
-            //设置marker
-            options = new MarkerOptions()
-                    .position(latLng)//设置位置
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
-//                    .zIndex(9); // 设置marker所在层级
-            optionsList.add(options);
-            //添加marker
+//        OverlayOptions options;
+//        for (int i = 5; i < 10; i++) {
+//            latLng = new LatLng((29.972587-(10*i)/100),113.942558-(10*i)/100);
+//            //设置marker
+//            options = new MarkerOptions()
+//                    .position(latLng)//设置位置
+//                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
+////                    .zIndex(9); // 设置marker所在层级
+//            optionsList.add(options);
+        //添加marker
 //                mapViewMap.addOverlay(options);
 //            marker = (Marker) mapViewMap.addOverlay(options);
 //            //使用marker携带info信息，当点击事件的时候可以通过marker获得info信息
@@ -156,7 +157,7 @@ public class ProjectFragment extends BaseFragment {
 //            //info必须实现序列化接口
 //            bundle.putSerializable("info", info);
 //            marker.setExtraInfo(bundle);
-        }
+//        }
 //        LatLng center = new LatLng(latitude, longitude);
 //        BitmapDescriptor centerBitmap = BitmapDescriptorFactory
 //                .fromResource(R.mipmap.icon_marker);
@@ -165,33 +166,43 @@ public class ProjectFragment extends BaseFragment {
 //                .position(center)
 //                .icon(centerBitmap);
 //        optionsList.add(centerOption);
-        mapViewMap.addOverlays(optionsList);
+//        mapViewMap.addOverlays(optionsList);
 
 //        MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
 //        mapViewMap.setMapStatus(msu);
-
+        /*-----------------------------------------------*/
         //创建OverlayOptions的集合
-//        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
 //构造大量坐标数据
-//        LatLng point1 = new LatLng(29.972502, 113.94256);
-//        LatLng point2 = new LatLng(29.982502, 113.95256);
-//        LatLng point3 = new LatLng(29.962502, 113.96256);
-////创建OverlayOptions属性
-//        OverlayOptions option1 =  new MarkerOptions()
-//                .position(point1)
-//                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
-//        OverlayOptions option2 =  new MarkerOptions()
-//                .position(point2)
-//                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
-//        OverlayOptions option3 =  new MarkerOptions()
-//                .position(point3)
-//                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
-////将OverlayOptions添加到list
-//        options.add(option1);
-//        options.add(option2);
-//        options.add(option3);
-////在地图上批量添加
-//        mapViewMap.addOverlays(options);
+        LatLng point1 = new LatLng(30.516832, 114.419203);
+        LatLng point2 = new LatLng(30.406832, 114.400203);
+        LatLng point3 = new LatLng(30.466832, 114.429203);
+
+//创建OverlayOptions属性
+        OverlayOptions option1 = new MarkerOptions()
+                .position(point1)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
+        OverlayOptions option2 = new MarkerOptions()
+                .position(point2)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
+        OverlayOptions option3 = new MarkerOptions()
+                .position(point3)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.icon_markers));
+//将OverlayOptions添加到list
+        options.add(option1);
+        options.add(option2);
+        options.add(option3);
+//在地图上批量添加
+        mapViewMap.addOverlays(options);
+
+        //添加marker点击事件的监听
+        mapViewMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                ToastUtils.showShort("我点丶");
+                return true;
+            }
+        });
     }
 
     /**
